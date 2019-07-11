@@ -1,0 +1,19 @@
+
+  
+    film.setId(movie.get);
+    film.setLink(movie.get);
+    film.setImg(movie.get);
+    film.setAlt(movie.get);
+    film.setActor(movie.get);
+        film.setType(movie.get);
+    film.setPlot(movie.get);
+    film.setMoredesc(movie.get);
+    film.setStatus(movie.get);
+    film.setRegion(movie.get);
+    film.setLanguage(movie.get);
+    film.setDirector(movie.get);
+    film.setYear(movie.get);
+    film.setScore(movie.get);
+    film.setPlaylist(movie.get);
+    film.setUpdated(movie.get);
+    film.setCreated(movie.get);
