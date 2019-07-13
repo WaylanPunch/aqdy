@@ -51,11 +51,11 @@
         <li class="has-submenu">
             <a href="#">演员<span class="ti-angle-down"></span></a>
             <ul class="submenu">
-                <li><a th:href="@{/blog}">日本</a></li>
-                <li><a th:href="@{/blogsingle}">其他</a></li>
+                <li><a th:href="@{/actor/japan}">日本</a></li>
+                <li><a th:href="@{/actor/other}">其他</a></li>
             </ul>
         </li>
-        <li><a th:href="@{/contact}">关于</a></li>
+        <li><a th:href="@{/contact}">联系我们</a></li>
     </ul>
 </nav>
 <div id="menu-overlay"></div>
@@ -137,149 +137,28 @@
             <div class="portfolio-content">
                 <div class="portfolio-tab pb55">
                     <div id="filters" class="button-group pb45">
-                        <button class="tab-button active" data-filter="*">所有<span>75</span></button>
-                        <button class="tab-button" data-filter=".lunli">伦理片<span>06</span></button>
-                        <button class="tab-button" data-filter=".lusi">撸丝片<span>22</span></button>
-                        <button class="tab-button" data-filter=".shebao">社保片<span>14</span></button>
-                        <button class="tab-button" data-filter=".lldm">黄动漫<span>03</span></button>
+                        <button id="btnLoadAll" class="tab-button active" data-filter="*">所有<span>75</span></button>
+                        <button id="btnLoadLunli" class="tab-button" data-filter=".lunli">伦理片<span>06</span></button>
+                        <button id="btnLoadLusi" class="tab-button" data-filter=".lusi">撸丝片<span>22</span></button>
+                        <button id="btnLoadShebao" class="tab-button" data-filter=".shebao">社保片<span>14</span></button>
+                        <button id="btnLoadLldm" class="tab-button" data-filter=".lldm">黄动漫<span>03</span></button>
                     </div>
                     <!-- /tab-button -->
                     <!--<span th:text="${films.size()}"></span>-->
                     <div class="portfolio-tab-text-pic row">
                         <div id="posts">
 
-                            <div th:each="film:${films}">
 
-                                <div th:if="${film.type=='伦理片'}" th:id="${filmStat.index}" class="item item-grid lunli">
-                                    <div class="item-wrap">
-                                        <div class="work-item">
-                                            <div class="work-pic">
-                                                <img th:src="${film.img}" th:alt="${film.alt}">
-                                            </div>
-                                            <!-- //img -->
-                                            <div class="hover-content">
-                                                <div class="hover-text text-center">
-                                                    <a th:href="${film.img}" data-lightbox="roadtrip"><span
-                                                            class="ti-fullscreen"></span></a>
-                                                </div>
-                                                <!-- //light-box-img -->
-                                                <div class="project-description text-uppercase ul-li">
-                                                    <h3><a th:href="@{/blogsingle}" th:text="${film.plot}"></a></h3>
-                                                    <ul class="project-catagorry text-capitalize">
-                                                        <li><a th:href="@{/blogsingle}" th:text="${film.actor}"></a>
-                                                        </li>
-
-                                                        <li><a th:href="@{/blogsingle}" th:text="${film.type}"></a></li>
-                                                    </ul>
-                                                </div>
-                                                <!-- //project-description -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /item -->
-
-                                <div th:if="${film.type=='撸丝片'}" th:id="${filmStat.index}" class="item item-grid lusi">
-                                    <div class="item-wrap">
-                                        <div class="work-item">
-                                            <div class="work-pic">
-                                                <img th:src="${film.img}" th:alt="${film.alt}">
-                                            </div>
-                                            <!-- //img -->
-                                            <div class="hover-content">
-                                                <div class="hover-text text-center">
-                                                    <a th:href="${film.img}" data-lightbox="roadtrip"><span
-                                                            class="ti-fullscreen"></span></a>
-                                                </div>
-                                                <!-- //light-box-img -->
-                                                <div class="project-description text-uppercase ul-li">
-                                                    <h3><a th:href="@{/blogsingle}" th:text="${film.plot}"></a></h3>
-                                                    <ul class="project-catagorry text-capitalize">
-                                                        <li><a th:href="@{/blogsingle}" th:text="${film.actor}"></a>
-                                                        </li>
-
-                                                        <li><a th:href="@{/blogsingle}" th:text="${film.type}"></a></li>
-                                                    </ul>
-                                                </div>
-                                                <!-- //project-description -->
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <!-- /item -->
-
-                                <div th:if="${film.type=='社保片'}" th:id="${filmStat.index}"
-                                     class="item item-grid shebao">
-                                    <div class="item-wrap">
-                                        <div class="work-item">
-                                            <div class="work-pic">
-                                                <img th:src="${film.img}" th:alt="${film.alt}">
-                                            </div>
-                                            <!-- //img -->
-                                            <div class="hover-content">
-                                                <div class="hover-text text-center">
-                                                    <a th:href="${film.img}" data-lightbox="roadtrip"><span
-                                                            class="ti-fullscreen"></span></a>
-                                                </div>
-                                                <!-- //light-box-img -->
-                                                <div class="project-description text-uppercase ul-li">
-                                                    <h3><a th:href="@{/blogsingle}" th:text="${film.plot}"></a></h3>
-                                                    <ul class="project-catagorry text-capitalize">
-                                                        <li><a th:href="@{/blogsingle}" th:text="${film.actor}"></a>
-                                                        </li>
-
-                                                        <li><a th:href="@{/blogsingle}" th:text="${film.type}"></a></li>
-                                                    </ul>
-                                                </div>
-                                                <!-- //project-description -->
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <!-- /item -->
-
-                                <div th:if="${film.type=='伦理动漫'}" th:id="${filmStat.index}" class="item item-grid lldm">
-                                    <div class="item-wrap">
-                                        <div class="work-item">
-                                            <div class="work-pic">
-                                                <img th:src="${film.img}" th:alt="${film.alt}">
-                                            </div>
-                                            <!-- //img -->
-                                            <div class="hover-content">
-                                                <div class="hover-text text-center">
-                                                    <a th:href="${film.img}" data-lightbox="roadtrip"><span
-                                                            class="ti-link"></span></a>
-                                                </div>
-                                                <!-- //light-box-img -->
-                                                <div class="project-description text-uppercase ul-li">
-                                                    <h3><a th:href="@{/blogsingle}" th:text="${film.plot}"></a></h3>
-                                                    <ul class="project-catagorry text-capitalize">
-                                                        <li><a th:href="@{/blogsingle}" th:text="${film.actor}"></a>
-                                                        </li>
-
-                                                        <li><a th:href="@{/blogsingle}" th:text="${film.type}"></a></li>
-                                                    </ul>
-                                                </div>
-                                                <!-- //project-description -->
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <!-- /item -->
-
-                            </div>
 
                         </div><!--//posts-->
                     </div><!--//portfolio-tab-text-pic-->
                 </div><!--//portfolio-tab-->
 
-
+                <input id="iType" type="hidden" value="2" />
+                <input id="iPageIndex" type="hidden" value="0" />
                 <div class="poppin-more text-uppercase text-center">
                     <div id="btnLoadMore" class="more-btn">
-                        <a id="aLoadMore" th:href="@{'/loadmore/'+${pageIndex+1}}">更多</a>
+                        <a id="aLoadMore" href="javascript:void(0)">更多</a>
                     </div>
                 </div>
                 <!--<span th:text="${pageIndex}"></span>-->
@@ -291,9 +170,6 @@
 </section>
 <!-- End of portfolio section
     ============================================= -->
-
-<div class="tlinks">Collect from <a href="http://www.cssmoban.com/">自助建站</a></div>
-
 
 <!-- Start of newsletter section
     ============================================= -->
@@ -491,9 +367,7 @@
                             <li><a href="#"><span class="ti-instagram"></span></a></li>
                         </ul><!-- /.page-head-social-list -->
                     </div>
-                    <span>© puppin 2018 - All Rights Reserved - More Templates <a href="http://www.cssmoban.com/"
-                                                                                  target="_blank" title="模板之家">模板之家</a> - Collect from <a
-                            href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></span>
+                    <span>© aqdy 2019 - All Rights Reserved - More Information <a href="https://github.com/WaylanPunch/aqdy" target="_blank" title="量子力学（伪）研究中心">量子力学（伪）研究中心</a> - Coding from <a href="https://github.com/WaylanPunch" title="Waylan Punch" target="_blank">Waylan Punch</a></span>
                 </div>
                 <!-- //copy-right-area -->
             </div><!--  /.container -->
@@ -526,6 +400,8 @@
 <!-- Include script.js -->
 <script th:src="@{/static/assets/js/script.js}"></script>
 
+<!-- Include index.js -->
+<script th:src="@{/static/js/index.js}"></script>
 
 </body>
 </html>

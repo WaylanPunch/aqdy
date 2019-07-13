@@ -1,0 +1,27 @@
+<div id="filmid" class="item item-grid lusi">
+	<div class="item-wrap">
+		<div class="work-item">
+			<div class="work-pic">
+				<img src="filmimg" alt="filmalt">
+			</div>
+			<!-- //img -->
+			<div class="hover-content">
+				<div class="hover-text text-center">
+					<a href="filmimg" data-lightbox="roadtrip"><span
+							class="ti-fullscreen"></span></a>
+				</div>
+				<!-- //light-box-img -->
+				<div class="project-description text-uppercase ul-li">
+					<h3><a href="filmdetail">filmplot</a></h3>
+					<ul class="project-catagorry text-capitalize">
+						<li><a href="filmdetail">filmactor</a></li>
+
+						<li><a href="filmdetail">filmtype</a></li>
+					</ul>
+				</div>
+				<!-- //project-description -->
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /item -->

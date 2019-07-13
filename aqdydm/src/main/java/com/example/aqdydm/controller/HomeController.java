@@ -1,8 +1,8 @@
 package com.example.aqdydm.controller;
 
 import com.example.aqdydm.bean.Film;
-import com.example.aqdydm.service.CrawlerService;
-import com.example.aqdydm.service.MongoService;
+import com.example.aqdydm.bean.FilmResult;
+import com.example.aqdydm.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,43 +23,39 @@ import java.util.List;
 public class HomeController {
 
     @Autowired
-    private MongoService mongoService;
+    private FilmService filmService;
 
-    @GetMapping(value = "/")
-    public String index(Model model) {
-        List<Film> films = mongoService.getFilmShebaoByPage(0, 12);
-        model.addAttribute("films", films);
-        model.addAttribute("pageIndex", 0);
-        model.addAttribute("pageSize", 12);
+    @GetMapping(value = {"/", "/index", "/home"})
+    public String index() {
         return "index";
     }
 
-    @GetMapping(value = "/index")
-    public String index2(Model model) {
-        List<Film> films = mongoService.getFilmShebaoByPage(0, 12);
-        model.addAttribute("films", films);
-        model.addAttribute("pageIndex", 0);
-        model.addAttribute("pageSize", 12);
-        return "index";
+    @GetMapping(value = "/film/page/{type}/{pageIndex}")
+    @ResponseBody
+    public FilmResult load(@PathVariable(name = "type") int type, @PathVariable(name = "pageIndex") int pageIndex) {
+        List<Film> films = filmService.getFilmListByPage(type, pageIndex, 12);
+        if (null != films) {
+            return FilmResult.success().add("films", films);
+        } else {
+            return FilmResult.failure();
+        }
     }
 
-    @GetMapping(value = "/loadmore/{pageIndex}")
-    public String loadMore(@PathVariable(name = "pageIndex") int pageIndex, Model model) {
-        List<Film> films = mongoService.getFilmShebaoByPage(pageIndex, 12);
-        model.addAttribute("films", films);
-        model.addAttribute("pageIndex", pageIndex);
-        model.addAttribute("pageSize", 12);
-        return "index";
+    @GetMapping(value = "/film/detail/{type}/{id}")
+    public String filmDetail(@PathVariable(name = "type") int type, @PathVariable(name = "id") String id, Model model) {
+        Film film = filmService.getFilmDetailById(type, id);
+        model.addAttribute("film", film);
+        return "filmDetail";
     }
 
-    @GetMapping(value = "/blog")
-    public String blog() {
-        return "blog";
+    @GetMapping(value = "/actor/japan")
+    public String actor1() {
+        return "actor";
     }
 
-    @GetMapping(value = "/blogsingle")
-    public String blogSingle() {
-        return "blog-single";
+    @GetMapping(value = "/actor/other")
+    public String actor2() {
+        return "actor";
     }
 
     @GetMapping(value = "/contact")

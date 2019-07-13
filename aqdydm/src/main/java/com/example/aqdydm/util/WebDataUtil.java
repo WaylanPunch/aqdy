@@ -1,6 +1,6 @@
 package com.example.aqdydm.util;
 
-import com.example.aqdydm.bean.Movie;
+import com.example.aqdydm.bean.Film;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -45,8 +45,8 @@ public class WebDataUtil {
         return WebDataUtilHolder.INSTANCE;
     }
 
-    public List<Movie> getMainPageData(String url) {
-        List<Movie> movies = new ArrayList<>();
+    public List<Film> getMainPageData(String url) {
+        List<Film> films = new ArrayList<>();
         Connection connection = null;
         try {
             //这里是分享地址：
@@ -75,23 +75,23 @@ public class WebDataUtil {
                 String plot = item.getElementsByTag("p").get(2).html();
                 plot = plot.substring(plot.lastIndexOf('>') + 1);
                 String moreDesc = "";
-                Movie movie = new Movie(id, link, img, alt, actor, type, plot, moreDesc, new Date());
-                movie.setUpdated(new Date());
-                movies.add(movie);
+                Film film = new Film(id, link, img, alt, actor, type, plot, moreDesc, new Date());
+                film.setUpdated(new Date());
+                films.add(film);
             }
         } catch (Exception e) {
-            movies = null;
+            films = null;
             e.printStackTrace();
         } finally {
             connection = null;
         }
-        return movies;
+        return films;
     }
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-    public Movie getDetailPageData(String url) {
-        Movie movie = null;
+    public Film getDetailPageData(String url) {
+        Film film = null;
         Connection connection = null;
         try {
             //这里是分享地址：
@@ -105,7 +105,7 @@ public class WebDataUtil {
             //这里就是获取该页面的HTML元素。
             //System.out.println(documentDemo.toString());
 
-            movie = new Movie();
+            film = new Film();
             Element detail = documentDemo.getElementsByClass("info fn-clear").get(0);
             Elements items = detail.getElementsByTag("dl");
             String status = items.get(1).getElementsByTag("dd").text();
@@ -114,10 +114,10 @@ public class WebDataUtil {
             String director = items.get(5).getElementsByTag("dd").text();
             String createdStr = items.get(6).getElementsByTag("dd").text();
 
-            movie.setStatus(status);
-            movie.setRegion(region);
-            movie.setLanguage(language);
-            movie.setDirector(director);
+            film.setStatus(status);
+            film.setRegion(region);
+            film.setLanguage(language);
+            film.setDirector(director);
 
             Date created = null;
             int year = 0;
@@ -127,10 +127,10 @@ public class WebDataUtil {
             }
 
             if (0 != year) {
-                movie.setYear(year);
+                film.setYear(year);
             }
             if (null != created) {
-                movie.setCreated(created);
+                film.setCreated(created);
             }
             try {
                 Element play = documentDemo.getElementsByClass("play-list").get(0);
@@ -141,22 +141,23 @@ public class WebDataUtil {
                         stringBuilder.append(episode.attr("href") + "#");
                     }
                     String playlist = stringBuilder.substring(0, stringBuilder.length() - 1).toString();
-                    movie.setPlaylist(playlist);
+                    film.setPlaylist(playlist);
                 } else {
-                    movie.setPlaylist("");
+                    film.setPlaylist("");
                 }
             } catch (Exception e) {
-                movie.setPlaylist("");
+                film.setPlaylist("");
             }
         } catch (Exception e) {
-            movie = null;
+            film = null;
         } finally {
             connection = null;
         }
-        return movie;
+        return film;
     }
 
-    public Movie getDetailPageDataHTTPS(String link) {
+    /*
+    public Film getDetailPageDataHTTPS(String link) {
         URL url;
         InputStream is = null;
         BufferedReader br;
@@ -185,8 +186,10 @@ public class WebDataUtil {
         }
         return null;
     }
+    */
 
-    public Movie getDetailPageDataHTTP(String link) {
+    /*
+    public Film getDetailPageDataHTTP(String link) {
         URL url;
         InputStream is = null;
         BufferedReader br;
@@ -214,4 +217,5 @@ public class WebDataUtil {
         }
         return null;
     }
+    */
 }
