@@ -135,18 +135,14 @@ public class WebDataUtil {
             try {
                 Element play = documentDemo.getElementsByClass("play-list").get(0);
                 Elements episodes = play.getElementsByTag("a");
+                List<String> playList=new ArrayList<>();
                 if (null != episodes && episodes.size() > 0) {
-                    StringBuilder stringBuilder = new StringBuilder();
                     for (Element episode : episodes) {
-                        stringBuilder.append(episode.attr("href") + "#");
+                        playList.add(episode.attr("href"));
                     }
-                    String playlist = stringBuilder.substring(0, stringBuilder.length() - 1).toString();
-                    film.setPlaylist(playlist);
-                } else {
-                    film.setPlaylist("");
+                    film.setPlaylist(playList);
                 }
             } catch (Exception e) {
-                film.setPlaylist("");
             }
         } catch (Exception e) {
             film = null;

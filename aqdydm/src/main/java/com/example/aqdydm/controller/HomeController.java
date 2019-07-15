@@ -2,7 +2,7 @@ package com.example.aqdydm.controller;
 
 import com.example.aqdydm.bean.Film;
 import com.example.aqdydm.bean.FilmResult;
-import com.example.aqdydm.service.FilmService;
+import com.example.aqdydm.service.IFilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +23,7 @@ import java.util.List;
 public class HomeController {
 
     @Autowired
-    private FilmService filmService;
+    private IFilmService filmService;
 
     @GetMapping(value = {"/", "/index", "/home"})
     public String index() {
@@ -62,4 +62,26 @@ public class HomeController {
     public String contact() {
         return "contact";
     }
+
+    /*@GetMapping(value = "/update")
+    @ResponseBody
+    public FilmResult updateFilms() {
+        boolean result = filmService.update();
+        if (result) {
+            return FilmResult.success();
+        } else {
+            return FilmResult.failure();
+        }
+    }
+
+    @GetMapping(value = "/check")
+    @ResponseBody
+    public FilmResult checkFilms() {
+        boolean result = filmService.check();
+        if (result) {
+            return FilmResult.success();
+        } else {
+            return FilmResult.failure();
+        }
+    }*/
 }

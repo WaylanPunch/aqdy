@@ -22,7 +22,13 @@ public class AqdydmApplicationTests {
 
     @Test
     public void contextLoads() {
-
+        String plays = "sdfsdfgfdg#dfg";
+        String[] playArray = plays.split("#");
+        List<String> playList = new ArrayList<>();
+        for (String playStr : playArray) {
+            playList.add(playStr);
+        }
+        System.out.println(playList);
     }
 
 }

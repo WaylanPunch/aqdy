@@ -163,10 +163,9 @@
                             <div class="category-item mt20 ul-li">
                                 <h2>播放列表</h2>
                                 <ul class="category-item-list ul-li-block">
-                                    <li><a href="#">第一集</a></li>
-                                    <li><a href="#">第二集</a></li>
-                                    <li><a href="#">第三集</a></li>
-                                    <li><a href="#">第四集</a></li>
+                                    <li th:each="play,playStat :${film.playlist}"><a th:href="${play}"
+                                                                                     th:text="第+${playStat.index+1}+集"></a>
+                                    </li>
                                 </ul>
                             </div>
 
@@ -290,13 +289,20 @@
                                 <!-- //.widgettitle -->
                                 <div class="category-item mt20 ul-li">
                                     <ul class="category-item-list ul-li-block">
-                                        <li><span>类型</span><span class="badge pull-right" th:text="${film.type}"></span></li>
-                                        <li><span>地区</span><span class="badge pull-right" th:text="${film.region}"></span></li>
-                                        <li><span>语言</span><span class="badge pull-right" th:text="${film.language}"></span></li>
-                                        <li><span>导演</span><span class="badge pull-right" th:text="${film.director}"></span></li>
-                                        <li><span>时间</span><span class="badge pull-right" th:text="${film.created}"></span></li>
-                                        <li><span>状态</span><span class="badge pull-right" th:text="${film.status}"></span></li>
-                                        <li><span>评价</span><span class="badge pull-right" th:text="${film.score}"></span></li>
+                                        <li><span>类型</span><span class="badge pull-right" th:text="${film.type}"></span>
+                                        </li>
+                                        <li><span>地区</span><span class="badge pull-right"
+                                                                 th:text="${film.region}"></span></li>
+                                        <li><span>语言</span><span class="badge pull-right"
+                                                                 th:text="${film.language}"></span></li>
+                                        <li><span>导演</span><span class="badge pull-right"
+                                                                 th:text="${film.director}"></span></li>
+                                        <li><span>时间</span><span class="badge pull-right"
+                                                                 th:text="${film.created}"></span></li>
+                                        <li><span>状态</span><span class="badge pull-right"
+                                                                 th:text="${film.status}"></span></li>
+                                        <li><span>评价</span><span class="badge pull-right"
+                                                                 th:text="${film.score}"></span></li>
                                     </ul>
                                 </div>
                                 <!-- /.category-item  -->
@@ -314,7 +320,8 @@
                                     <div class="recent-blog-item">
                                         <div class="side-tab-img-text">
                                             <div class="rec-img">
-                                                <img th:src="@{/static/assets/img/recent-blog/recent-1.jpg}" alt="image">
+                                                <img th:src="@{/static/assets/img/recent-blog/recent-1.jpg}"
+                                                     alt="image">
                                             </div>
                                             <div class="side-tab-text ul-li">
                                                 <div class="rec-link">
@@ -329,7 +336,8 @@
 
                                         <div class="side-tab-img-text">
                                             <div class="rec-img">
-                                                <img th:src="@{/static/assets/img/recent-blog/recent-2.jpg}" alt="image">
+                                                <img th:src="@{/static/assets/img/recent-blog/recent-2.jpg}"
+                                                     alt="image">
                                             </div>
                                             <div class="side-tab-text ul-li">
                                                 <div class="rec-link">
@@ -343,7 +351,8 @@
 
                                         <div class="side-tab-img-text">
                                             <div class="rec-img">
-                                                <img th:src="@{/static/assets/img/recent-blog/recent-3.jpg}" alt="image">
+                                                <img th:src="@{/static/assets/img/recent-blog/recent-3.jpg}"
+                                                     alt="image">
                                             </div>
                                             <div class="side-tab-text ul-li">
                                                 <div class="rec-link">
@@ -358,7 +367,8 @@
 
                                         <div class="side-tab-img-text">
                                             <div class="rec-img">
-                                                <img th:src="@{/static/assets/img/recent-blog/recent-4.jpg}" alt="image">
+                                                <img th:src="@{/static/assets/img/recent-blog/recent-4.jpg}"
+                                                     alt="image">
                                             </div>
                                             <div class="side-tab-text ul-li">
                                                 <div class="rec-link">
